@@ -1,0 +1,18 @@
+version: '3'
+services:
+  cuvis-app:
+    build:
+      context: ./cuvis-sdk-be
+      dockerfile: Dockerfile
+    platform: linux/amd64  # required to install CUVIS
+    volumes:
+      - ./cuvis-sdk-be:/app/app
+    ports:
+      - "8000:8000"
+      - "8888:8888"
+  cuvis-client:
+    build:
+      context: ./cuvis-sdk-fe
+      dockerfile: Dockerfile
+    ports:
+      - "80:3000"
