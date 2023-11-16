@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings version="2.4.2" xmlns="http://cubert-gmbh.de/core/settings.xsd">
+	<!-- Port for soap -->
+	<property id="soap_port" value="9392" />
+	
+	<!--Override init file verification -->
+	<property id="no_valid_init" value="true" />
+	<!-- GPS properties -->
+	<!--
+	<property id="gps_port" value="" />
+	<property id="gps_baud" value="4800" />
+	<property id="gps_databits" value="8" />
+	<property id="gps_stopbits" value="0" />
+	<property id="gps_parity" value="0" />
+	-->
+	<!-- if true, auto exposure cannot set exposure time above a given limit. Said limit is set by auto_exposure_exposure_limit-->	
+	<property id="apply_auto_exposure_exposure_limit" value="true"/>
+	<!-- limit for exposure set by auto exposure. See apply_auto_exposure_exposure_limit -->
+	<property id="auto_exposure_exposure_limit" value="500.0"/>	
+
+	<!-- some cameras support sensor-synchronization monitoring, the value is the maximum allowed desync in milliseconds. Default: 100 ms -->
+	<property id="max_sensor_desync" value="5"/>
+	
+	<!-- limit the histogram calculation to cubes of a certain total size -->
+	<!-- <property id="histogram_max_sz" value="2000000"/> -->
+	
+	
+</settings>

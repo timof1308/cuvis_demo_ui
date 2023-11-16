@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings version="2.4.2" xmlns="http://cubert-gmbh.de/core/settings.xsd">	
+	<!--Limit FPS for display purposes to this value per second -->
+	<property id="view_fps" value="99" />
+	
+	<property id="view_bandwidth" value="10" />
+	
+	<property id="view_bandwith_dampending" value="0.3" />
+	
+	<property id="view_size_gallery" value="100" />
+	<property id="view_size_gallery_preview" value="0.1" />
+	
+	
+	
+	<property id="soap_io_chunk" value="false" />
+	<property id="soap_zlib" value="false" />
+	<property id="soap_worker_thd_cnt" value="4" />
+	<property id="soap_package_queue" value="100" />
+	
+	<!-- do not allow for packed image transmission between camera and minipc2 -->
+	<property id="allow_packed_transmission" value="true" />
+	
+	<property id="file_compression" value="true" />
+	
+	<!-- further tweaking options --> 
+	<property id="wait_time_integration_time_offset" value="300" />
+	<property id="wait_time_integration_time_factor" value="1" />
+	<property id="wait_time_average_count_offset" value="0" />
+</settings>

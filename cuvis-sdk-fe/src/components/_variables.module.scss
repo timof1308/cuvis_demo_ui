@@ -1,0 +1,17 @@
+$_baseColor: #fff;
+$_primary: #202020;
+$_black: #000;
+$_courseFrom: #00f1b3;
+$_courseTo: #00ecfb;
+$_lightWhite: #ccc;
+$_footer: #cc0605;
+$_blue: #52c0ff;
+
+:export{
+   baseColor: $_baseColor;
+   black: $_black;
+   lightWhite: $_lightWhite;
+   primary: $_primary;
+   footerColor: $_footer;
+   blue: $_blue;
+}

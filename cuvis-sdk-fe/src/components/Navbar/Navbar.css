@@ -1,0 +1,150 @@
+/* Navbar */
+:export {
+  baseColor: #fff;
+  black: #000;
+  lightWhite: #ccc;
+  primary: #202020;
+  footerColor: #cc0605;
+  blue: #52c0ff;
+}
+
+.navbar {
+  padding-bottom: 1px;
+  border-top: solid 5px #00f1b3;
+  background-color: #000;
+  box-shadow: 0 3px 6px -2px rgba(0, 0, 0, 0.12), 0 6px 16px -11px rgba(0, 0, 0, 0.08);
+  top: 0;
+  margin-bottom: 50px;
+  z-index: 5;
+}
+.navbar .nav-header {
+  background-color: #000;
+  border-bottom: 0;
+  margin: 0 auto;
+  width: 80%;
+}
+.navbar .nav-header .logo {
+  width: 200px;
+  float: left;
+  margin-top: 10px;
+}
+
+h3.brand-font {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.logo .navbar-menu {
+  float: left;
+}
+
+.ant-typography {
+  font-family: "Tomorrow" !important;
+}
+
+.navbar-menu .ant-layout-header {
+  padding: 0 20px;
+}
+
+.navbar-menu .ant-menu-horizontal {
+  border-bottom: 0;
+}
+.navbar-menu .ant-menu-item {
+  padding-bottom: 0px;
+}
+.navbar-menu .leftMenu {
+  float: right;
+  width: 50%;
+  background-color: inherit;
+}
+.navbar-menu .leftMenu ul {
+  background-color: inherit;
+  color: #ccc;
+}
+.navbar-menu .leftMenu ul li {
+  font-family: "Tomorrow";
+  font-size: 12px;
+}
+
+.ant-menu-horizontal > .ant-menu-item::after {
+  border-bottom: 0 !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item-selected::after {
+  border-bottom: 0 !important;
+}
+
+.ant-menu-horizontal > .ant-menu-submenu::after {
+  border-bottom: 0 !important;
+}
+
+.ant-menu-horizontal > .ant-menu-submenu:hover {
+  color: #fff !important;
+  border-bottom: 0 !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item:hover {
+  color: #fff !important;
+  border-bottom: 0 !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item-selected {
+  color: #fff !important;
+}
+
+.menuButton {
+  float: right;
+  height: 32px;
+  padding: 6px;
+  margin-top: 14px;
+  display: none;
+  background: none;
+  margin-right: 10px;
+  color: #fff !important;
+}
+
+.ant-drawer-body {
+  padding: 0;
+}
+
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item,
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-submenu {
+  display: inline-block;
+  width: 100%;
+}
+
+.ant-drawer-body .ant-menu-horizontal {
+  border-bottom: none;
+}
+
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover {
+  border-bottom-color: transparent;
+}
+
+.username {
+  display: none;
+  margin-left: 8px;
+}
+
+@media (max-width: 767px) {
+  .menuButton {
+    display: block;
+    margin-right: 10px;
+  }
+  .leftMenu,
+  .rightMenu {
+    display: none;
+  }
+  .logo a {
+    margin-left: -10px;
+  }
+  .ant-drawer-title > .brand-font {
+    margin-bottom: 0;
+  }
+  .username {
+    display: inline-block;
+  }
+}
+/* Navbar End */
+
+/*# sourceMappingURL=Navbar.css.map */

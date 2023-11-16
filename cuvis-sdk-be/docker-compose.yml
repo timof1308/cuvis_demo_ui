@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  cuvis_app:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888" # jupyter
+      - "8000:8000" # fastapi
+    volumes:
+      - .:/opt/app
+
+# volumes:
+#   npm-sync:
+#     external: true

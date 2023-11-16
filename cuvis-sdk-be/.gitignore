@@ -1,0 +1,45 @@
+# Ignore virtual environment
+venv/
+
+# Ignore Python byte code
+__pycache__/
+**/__pycache__/
+
+
+# Ignore local development settings
+*.env
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+
+# Ignore pycache folders and files
+*.pyc
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore database files
+*.db
+
+# Ignore logs and log files
+*.log
+
+# Ignore API documentation files
+redoc-static.html
+swagger-static.html
+
+# Ignore generated or compiled files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignore generated test coverage files
+.coverage
+htmlcov/
+
+
+.DS_Store
+*.ipynb
+data/

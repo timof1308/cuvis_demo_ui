@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<userplugin  xmlns="http://cubert-gmbh.de/user/plugin/userplugin.xsd">
+  <configuration name="RGB" citation="" plugin_author="Cubert" plugin_version="2.0.1" required_engine_version="2.3.0">
+
+    <comment>A simple RGB viewer with automatic normalization.</comment>
+
+    <input id="Red_min" type="wavelength">630</input>
+    <input id="Red_max" type="wavelength">700</input>
+    <input id="Green_min" type="wavelength">490</input>
+    <input id="Green_max" type="wavelength">560</input>
+    <input id="Blue_min" type="wavelength">470</input>
+    <input id="Blue_max" type="wavelength">490</input>
+    <input id="weight_r" type="scalar">1</input>
+    <input id="weight_g" type="scalar">1</input>
+    <input id="weight_b" type="scalar">1</input>
+
+    <input id="Target" type="scalar" min="0.1" max="20" tickFreq="0.1">1</input>
+
+    <input id="bb_min" type="wavelength" readOnly="true" hide="true">0</input>
+    <input id="bb_max" type="wavelength" readOnly="true" hide="true">10000</input>
+
+    <evaluate id="norm_term">
+      <operator type="divide">
+        <value>128</value>
+        <accumulate method="average">
+          <range ref_min="bb_min" ref_max="bb_max" method="average"/>
+        </accumulate>
+      </operator>
+
+    </evaluate>
+    <evaluate id="chn_r">
+      <operator type="multiply">
+        <operator type="multiply">
+          <operator type="multiply">
+            <variable ref="norm_term"/>
+            <variable ref="weight_r"/>
+          </operator>    
+          <range ref_min="Red_min" ref_max="Red_max" method="median"/>
+        </operator>
+
+        <variable ref="Target"/>
+
+      </operator>
+
+    </evaluate>
+
+    <evaluate id="chn_g">
+      <operator type="multiply">
+
+        <operator type="multiply">
+          <operator type="multiply">
+            <variable ref="norm_term"/>
+            <variable ref="weight_g"/>
+          </operator>
+          <range ref_min="Green_min" ref_max="Green_max" method="median"/>
+        </operator>
+
+
+        <variable ref="Target"/>
+
+      </operator>
+    </evaluate>
+    <evaluate id="chn_b">
+      <operator type="multiply">
+
+
+        <operator type="multiply">
+          <operator type="multiply">
+            <variable ref="norm_term"/>
+            <variable ref="weight_b"/>
+          </operator>
+          <range ref_min="Blue_min" ref_max="Blue_max" method="median"/>
+        </operator>
+
+        <variable ref="Target"/>
+
+      </operator>
+    </evaluate>
+    <!--<output_image id="rgb" show="true">-->
+      <R>
+        <variable ref="chn_r"/>
+      </R>
+      <G>
+        <variable ref="chn_g"/>
+      </G>
+      <B>
+        <variable ref="chn_b"/>
+      </B>
+    <!--
+    </output_image>-->
+                  
+  </configuration>
+</userplugin>

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,300&display=swap');
+@import "./variables.module";
+
+body {
+   background-color: $_primary;
+}
+
+#topBox {
+   .ant-row {
+      .ant-col {
+         label {
+            color: $_baseColor;
+            font-family: "Tomorrow";
+         }
+      }
+      .ant-slider-rail {
+         background-color: $_baseColor;
+
+      }
+   }
+   .ant-typography {
+      font-family: "Tomorrow";
+      color: $_baseColor;
+   }
+}
+
+.ant-select-selection-placeholder, .ant-select-arrow {
+   color: $_lightWhite !important;
+}
+
+.ant-select-selector {
+   background-color: $_primary !important;
+   border-color: $_baseColor !important;
+}
+
+
+// Selection Options Items 
+.ant-select-selection-item {
+   color: $_baseColor !important;
+   font-family: "Tomorrow" !important;
+}
+
+.ant-select-item-option-content {
+   color: $_primary !important;
+   font-family: "Tomorrow" !important;
+}
+
+.ant-descriptions-item-content {   
+   color: $_baseColor !important;
+   font-family: "Tomorrow" !important;
+   text-align: left;
+}
+.ant-descriptions-title, .ant-descriptions-item-label {  
+   color: $_baseColor !important;
+   font-family: "Tomorrow" !important;
+}

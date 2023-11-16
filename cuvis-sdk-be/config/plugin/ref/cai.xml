@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<userplugin xmlns="http://cubert-gmbh.de/user/plugin/userplugin.xsd">
+ <configuration name="CAI" citation="Oppelt03" plugin_author="Cubert" plugin_version="1.0.0" required_engine_version="2.3.0"  comment="Chlorophyll Absoption Integral">
+  <comment>
+    Chlorophyll Absoption Integral
+    ---
+    cai:= ( ( @envelope - @integral ) / @envelope )
+    envelope:= envelope(CUBE(550 : 760 nm))
+    integral:= integral(CUBE(550 : 760 nm))
+    ---
+    Chlorophyll
+  </comment>
+
+
+   <input id="WL_1" readOnly="true" type="wavelength">550</input>
+   <input id="WL_2" readOnly="true" type="wavelength">760</input>
+   
+   <input id="col" min="-1" max="1" default="ndvi" type="colormap">ndvi</input>
+ 
+
+   <evaluate id="integral">
+     <range method="integral" ref_min="WL_1" ref_max="WL_2"/>
+   </evaluate>
+
+   <evaluate id="envelope">
+     <range method="envelope" ref_min="WL_1" ref_max="WL_2"/>
+   </evaluate>
+
+
+   <evaluate id="cai">
+
+      <operator type="divide">
+        <operator type="subtract">
+          <variable ref="envelope"/>
+          <variable ref="integral"/>
+        </operator>
+        <variable ref="envelope"/>
+      </operator>
+  
+   </evaluate>
+   
+   <output_image show="true">
+    <gray ref_colormap="col">
+      <variable ref="cai"/>
+    </gray>
+   </output_image>
+
+ </configuration>
+
+
+</userplugin>
+

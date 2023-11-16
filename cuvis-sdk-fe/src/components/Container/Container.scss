@@ -1,0 +1,33 @@
+@mixin container-size($width, $padding) {
+  width: $width;
+  max-width: 100%;
+  padding-right: $padding;
+  padding-left: $padding;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+
+  @include container-size(100%, 15px);
+
+  @media (min-width: 476px) {
+    @include container-size(100%, 15px);
+  }
+
+  @media (min-width: 768px) {
+    @include container-size(720px, 15px);
+  }
+
+  @media (min-width: 992px) {
+    @include container-size(960px, 15px);
+  }
+
+  @media (min-width: 1200px) {
+    @include container-size(1140px, 15px);
+  }
+
+  @media (min-width: 1400px) {
+    @include container-size(1340px, 15px);
+  }
+}

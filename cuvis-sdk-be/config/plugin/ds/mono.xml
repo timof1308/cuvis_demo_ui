@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<userplugin xmlns="http://cubert-gmbh.de/user/plugin/userplugin.xsd">
+  <configuration name="MONO" citation="" plugin_author="Cubert" plugin_version="1.0.1" required_engine_version="2.1.0">
+
+	<comment>A simple monochromatic viewer for raw values. Target=100 relates to the maximum possible raw counts mapped to full brightness.</comment>
+	
+    <input id="Gray" type="wavelength" min="300" max="1200" tickFreq="1">550</input>
+	    
+	<input id="Target" type="scalar" min="1" max="600" tickFreq="1">100</input>
+	
+    <gray min="0" max="255" colormap="hot">
+      <operator type="multiply">
+			<operator type="divide">					
+				<variable ref="Gray"/>
+				<rangemax/>
+			</operator>			
+			<operator type="divide">					
+				<value>25600</value>
+				<variable ref="Target"/>
+			</operator>			
+      </operator>
+
+    </gray>
+  </configuration>
+</userplugin>

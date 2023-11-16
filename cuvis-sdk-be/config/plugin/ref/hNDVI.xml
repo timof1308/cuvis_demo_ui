@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<userplugin xmlns="http://cubert-gmbh.de/user/plugin/userplugin.xsd">
+ <configuration name="hNDVI" citation="Oppelt02" plugin_author="Cubert" plugin_version="1.0.0" required_engine_version="2.3.0" comment="Hyperspectral NDVI"  >
+  <comment>
+    Hyperspectral NDVI
+    ---
+    hndvi:= ( ( CUBE(827 nm) - CUBE(668 nm) ) / ( CUBE(827 nm) + CUBE(668 nm) ) )
+    ---
+    Structure
+  </comment>
+
+   <input id="WL_1" type="wavelength">827</input>
+   <input id="WL_2" type="wavelength">668</input>
+   
+   <input id="col" min="-1" max="1" default="ndvi" type="colormap">ndvi</input>
+   
+   <evaluate id="hndvi">
+
+    <operator type="divide">
+      <operator type="subtract">
+        <variable ref="WL_1"/>  
+        <variable ref="WL_2"/>
+      </operator>
+      <operator type="add">
+        <variable ref="WL_1"/>  
+        <variable ref="WL_2"/>
+      </operator>  
+    </operator>
+      
+
+   </evaluate>
+   
+   <output_image show="true">
+    <gray ref_colormap="col">
+      <variable ref="hndvi"/>
+    </gray>
+   </output_image>
+
+ </configuration>
+
+
+</userplugin>

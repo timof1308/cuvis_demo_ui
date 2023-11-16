@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<userplugin  xmlns="http://cubert-gmbh.de/user/plugin/userplugin.xsd">
+  <configuration name="RGB" citation="" plugin_author="Cubert" plugin_version="2.0.1" required_engine_version="2.3.0">
+
+    <comment>A simple RGB viewer for reflectance values with normalization.</comment>
+
+    <input id="Red_min" type="wavelength">630</input>
+    <input id="Red_max" type="wavelength">700</input>
+    <input id="Green_min" type="wavelength">490</input>
+    <input id="Green_max" type="wavelength">560</input>
+    <input id="Blue_min" type="wavelength">470</input>
+    <input id="Blue_max" type="wavelength">490</input>
+
+    <input id="Target" type="scalar" min="0.1" max="2" tickFreq="0.1">1</input>
+
+
+    <R>
+      <operator type="multiply">
+        <operator type="multiply">
+          <operator type="divide">
+          <value>255</value>
+          <Ref100/> 
+          </operator>    
+          <range ref_min="Red_min" ref_max="Red_max" method="median"/>
+        </operator>
+
+        <variable ref="Target"/>
+
+      </operator>
+
+    </R>
+    <G>
+      <operator type="multiply">
+
+        <operator type="multiply">
+          <operator type="divide">
+            <value>255</value>
+            <Ref100/>
+          </operator>
+          <range ref_min="Green_min" ref_max="Green_max" method="median"/>
+        </operator>
+
+
+        <variable ref="Target"/>
+
+      </operator>
+    </G>
+    <B>
+      <operator type="multiply">
+
+
+        <operator type="multiply">
+          <operator type="divide">
+            <value>255</value>
+            <Ref100/>
+          </operator>
+          <range ref_min="Blue_min" ref_max="Blue_max" method="median"/>
+        </operator>
+
+        <variable ref="Target"/>
+
+      </operator>
+    </B>
+  </configuration>
+</userplugin>

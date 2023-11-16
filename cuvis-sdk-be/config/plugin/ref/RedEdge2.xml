@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<userplugin xmlns="http://cubert-gmbh.de/user/plugin/userplugin.xsd">
+  <configuration name="RedEdge2" citation="Cloutis96" plugin_author="Cubert" plugin_version="1.0.1" required_engine_version="2.1.0">
+    <comment>Rede edge 2, see doi:10.1080/01431169608949094</comment>
+
+    <input id="RED_min" type="wavelength">676</input>
+    <input id="RED_max" type="wavelength">685</input>
+
+    <input id="NIR_min" type="wavelength">708</input>
+    <input id="NIR_max" type="wavelength">716</input>
+
+    <input id="col" type="colormap" default="hot" min="-1" max="1">hot</input>
+    
+    <gray ref_colormap="col">
+      <operator type="divide">
+        <operator type="subtract">
+          <range ref_min="NIR_min" ref_max="NIR_max"/>
+          <range ref_min="RED_min" ref_max="RED_max"/>
+        </operator>
+        <threshold threshold="200" lowpass="false" defaultto="-0.001">
+          <operator type="add">
+            <range ref_min="NIR_min" ref_max="NIR_max"/>
+            <range ref_min="RED_min" ref_max="RED_max"/>
+          </operator>
+        </threshold>
+      </operator>
+    </gray>
+
+  
+  </configuration>
+</userplugin>

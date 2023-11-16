@@ -1,6 +1,0 @@
-[submodule "cuvis-sdk-be"] 
-  path = cuvis-sdk-be 
-  url = https://github.com/timof1308/cuvis-sdk-be.git
-[submodule "cuvis-sdk-fe"] 
-  path = cuvis-sdk-fe 
-  url = https://github.com/timof1308/cuvis-sdk-fe.git
