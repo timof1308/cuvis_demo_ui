@@ -99,7 +99,7 @@ const App: React.FunctionComponent = () => {
         body = JSON.stringify({ channels: [selectedRedChannel, selectedGreenChannel, selectedBlueChannel] })
       }
 
-      const response = await fetch(`http://127.0.0.1:8000/files/${selectedFile}/${activeSessionId}/image`, {
+      const response = await fetch(`${window.location.protocol}//${window.location.hostname}:8000/files/${selectedFile}/${activeSessionId}/image`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

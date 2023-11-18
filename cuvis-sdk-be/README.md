@@ -10,6 +10,6 @@ The Docker Container exposes the port 8000
 For development purposes you can add a `uvicorn app:app --host 0.0.0.0 --port 8000 --reload` to the [`start.sh`](./start.sh) script. This will ensure to reload the Fast API application on file changes.
 The sync the files with your Docker Container run make sure to add the volume tag: `-v ./cuvis-sdk-be:/app/app/`
 
-The API Documentation is available using [this link](http://localhost:8000/redoc)
+The API Documentation is available using `/redoc` endpoint
 
 
