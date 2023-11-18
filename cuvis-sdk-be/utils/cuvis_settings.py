@@ -36,7 +36,7 @@ def average_spectra(data: list[list[int]], radius: int, x: int, y: int) -> np.ar
     min_y = y-radius if y-radius > 0 else 0
     sample = data[min_x:x+radius,min_y:y+radius,:]
     sample = sample.reshape(sample.shape[0]*sample.shape[1],sample.shape[2])
-    return np.mean(sample,axis=0) / 100  # 10.000 == 100%
+    return (np.mean(sample,axis=0) / 10_000) * 100  # 10.000 == 100%
 
 def raster_data_to_image(raster_data: list[list[int]]) -> Image:
     # Get the number of dimensions in the input array
@@ -72,3 +72,7 @@ def tiff_to_jpeg(input_tiff_path: str, output_jpeg_path: str):
 
     # Save as JPEG
     tiff_image.save(output_jpeg_path, 'JPEG')
+
+def create_equal_bins(start, end, num_bins):
+    bins_array = np.linspace(start, end, num_bins)
+    return bins_array.astype(int)

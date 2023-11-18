@@ -67,7 +67,7 @@ def get_metadata(file_name: str, session_id: str) -> CuvisMetaDataResponse:
         integrationTime = str(mesu.IntegrationTime),
         processingMode = mesu.ProcessingMode,
         captureTime = f"{mesu.CaptureTime.strftime('%Y-%m-%d')}",
-        wavelengths = mesu.Data["cube"].wavelength,
+        wavelengths = mesu.Data["cube"].wavelength if mesu.ProcessingMode == "Reflectance" else create_equal_bins(350, 950, mesu.Data["SpRadCal"].array.shape[2]),
         isSession = file_name.endswith('cu3s'),
         sessionLength = session.getSize() if session is not None else 1
     )
@@ -112,6 +112,15 @@ def get_spectra_image(file_name: str, session_id: str, request: CuvisImageDataRe
 @app.post("/files/{file_name}/{session_id}/spectra")
 def get_spectra_data(file_name: str, session_id: str, request: CuvisSpectraRequest) -> CuvisSpectraResponse:
     mesu, session = get_measurement(file_name, session_id)
+    
+    if mesu.ProcessingMode != "Reflectance":
+        return CuvisSpectraResponse(
+            x = request.x,
+            y = request.y,
+            radius=request.radius,
+            averageSpectra = mesu.Data["SpRadCal"].array[0, 0, :],
+            wavelengths = create_equal_bins(350, 950, mesu.Data["SpRadCal"].array.shape[2]),
+        )
     
     return CuvisSpectraResponse(
         x = request.x,

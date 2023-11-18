@@ -11,6 +11,7 @@ export interface ISpectraDataLineChartProps {
 const SpectraDataLineChart: React.FunctionComponent<ISpectraDataLineChartProps> = (props: ISpectraDataLineChartProps) => {
     const cuvisClient = new CuvisClient()
     const [spectraData, setSpectraData] = useState<CuvisSpectraData | undefined>(undefined)
+    const [yAxisLegend, setYAxisLegend] = useState<string>("-")
     const {
         selectedFile: [selectedFile],
         coordinates: [coordinates],
@@ -24,6 +25,12 @@ const SpectraDataLineChart: React.FunctionComponent<ISpectraDataLineChartProps> 
             cuvisClient.getCuvisSpectraData(selectedFile, activeSessionId, { x: coordinates.x, y: coordinates.y, radius: radius }).then((spectraData: CuvisSpectraData) => {
                 setSpectraData(spectraData)
             })
+            
+            if (metadata && metadata.processingMode == "Reflectance") {
+                setYAxisLegend("Reflectance [%]")
+            } else {
+                setYAxisLegend("Radiance [W / m^2 / sr / µm]")
+            }
         }
     }, [coordinates, activeSessionId])
 
@@ -47,7 +54,9 @@ const SpectraDataLineChart: React.FunctionComponent<ISpectraDataLineChartProps> 
         <>
             <Row justify="center" align="middle" gutter={[8, 8]}>
                 <Col span={1}>
-                    <span style={{ color: "#8C8C8C", width: "100%", writingMode: "vertical-rl", textAlign: "center", transform: "rotate(180deg)"}}>{metadata ? metadata.processingMode : "-"}</span>
+                    <span style={{ color: "#8C8C8C", width: "100%", writingMode: "vertical-rl", textAlign: "center", transform: "rotate(180deg)" }}>
+                        {yAxisLegend}
+                    </span>
                 </Col>
                 <Col span={23}>
 
