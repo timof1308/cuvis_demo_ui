@@ -244,9 +244,7 @@ const App: React.FunctionComponent = () => {
           },
         })
 
-        console.log(md)
         cuvisClient.getCuvisPluginViews(md.processingMode).then((plugin_views: PluginView[]) => {
-          console.log(plugin_views)
           setPluginViews(plugin_views)
 
           fetchImage()

@@ -4,7 +4,7 @@ services:
     build:
       context: ./cuvis-sdk-be
       dockerfile: Dockerfile
-    platform: linux/amd64  # required to install CUVIS
+#    platform: linux/amd64  # required to install CUVIS
 #    volumes:
 #      - ./cuvis-sdk-be:/app/app
     ports:
